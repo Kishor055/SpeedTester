@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SpeedTester - Online Typing Speed Checker</title>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>SpeedTester</h1>
+  <button class="dark-toggle" id="dark-toggle" aria-label="Toggle dark and light theme" title="Toggle dark and light theme">
+    <span class="material-icons" id="dark-icon" aria-hidden="true">dark_mode</span>
+  </button>
+</header>
+
+<div id="landing-page" class="active" role="main" aria-label="Welcome to SpeedTester landing page">
+  <h1>Welcome to SpeedTester</h1>
+  <p>Test and improve your typing speed with our online typing speed checker. Challenge yourself to type faster and more accurately every time.</p>
+  <button id="go-to-tester" aria-describedby="start-desc">
+    <span class="material-icons" aria-hidden="true">keyboard</span> Get Started
+  </button>
+  <p id="start-desc" class="sr-only">Clicking this button will open the typing speed test page</p>
+</div>
+
+<div id="speedtester-page" role="main" aria-label="Typing speed tester" tabindex="-1">
+  <main>
+    <section aria-label="Typing test area">
+      <div class="test-area" id="test-text" aria-live="polite" aria-atomic="true" tabindex="0">
+        Click start to begin the typing test.
+      </div>
+      <input aria-label="Typing input area" id="hidden-input" type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" />
+    </section>
+
+    <section class="controls" aria-label="Typing test controls">
+      <select id="duration-select" aria-label="Select test duration" title="Select test duration">
+        <option value="15">15 seconds</option>
+        <option value="30">30 seconds</option>
+        <option value="60" selected>60 seconds</option>
+        <option value="120">120 seconds</option>
+      </select>
+      <button id="start-btn" aria-live="polite" aria-pressed="false" type="button" aria-disabled="false">
+        <span class="material-icons" aria-hidden="true">play_arrow</span> Start Test
+      </button>
+      <button id="reset-btn" type="button" disabled aria-disabled="true">
+        <span class="material-icons" aria-hidden="true">restart_alt</span> Reset
+      </button>
+    </section>
+
+    <section class="stats" aria-label="Typing test statistics">
+      <div class="stat-item" aria-live="polite" aria-atomic="true">
+        <span class="label">Time Left</span>
+        <span id="time-left" class="value">60</span> s
+      </div>
+      <div class="stat-item" aria-live="polite" aria-atomic="true">
+        <span class="label">WPM</span>
+        <span id="wpm" class="value">0</span>
+      </div>
+      <div class="stat-item" aria-live="polite" aria-atomic="true">
+        <span class="label">Accuracy</span>
+        <span id="accuracy" class="value">100</span><span style="font-size: 1rem;">%</span>
+      </div>
+      <div class="stat-item" aria-live="polite" aria-atomic="true">
+        <span class="label">Errors</span>
+        <span id="errors" class="value">0</span>
+      </div>
+      <div class="stat-item" aria-live="polite" aria-atomic="true">
+        <span class="label">CPS</span>
+        <span id="cps" class="value">0</span>
+      </div>
+      <div class="stat-item" aria-live="polite" aria-atomic="true">
+        <span class="label">Words</span>
+        <span id="words-count" class="value">0</span>
+      </div>
+    </section>
+    <div class="progress-container" aria-hidden="true" title="Test progress">
+      <div id="progress-bar" class="progress-bar"></div>
+    </div>
+  </main>
+</div>
+
+<footer>
+  &copy; 2024 SpeedTester. Designed for an optimal typing test experience.
+</footer>
+
+<div role="dialog" id="final-modal" class="modal-overlay" aria-modal="true" aria-labelledby="modal-title" aria-describedby="modal-desc" tabindex="-1">
+  <div class="modal" role="document">
+    <h2 id="modal-title">Test Complete</h2>
+    <p id="modal-desc">Congratulations! Here are your results:</p>
+    <div class="score-stats">
+      <div>
+        <span>WPM</span><br />
+        <strong id="final-wpm">0</strong>
+      </div>
+      <div>
+        <span>Accuracy</span><br />
+        <strong id="final-accuracy">0%</strong>
+      </div>
+      <div>
+        <span>Errors</span><br />
+        <strong id="final-errors">0</strong>
+      </div>
+      <div>
+        <span>CPS</span><br />
+        <strong id="final-cps">0</strong>
+      </div>
+    </div>
+    <button id="close-modal-btn" aria-label="Close result dialog">Close</button>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
